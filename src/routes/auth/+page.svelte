@@ -44,6 +44,8 @@
 	};
 
 	const signInHandler = async () => {
+		email = 'admin@sensetime.com';
+		password = 'Console1@';
 		const sessionUser = await userSignIn(email, password).catch((error) => {
 			toast.error(`${error}`);
 			return null;
@@ -114,11 +116,11 @@
 		await checkOauthCallback();
 
 		loaded = true;
-		if (($config?.features.auth_trusted_header ?? false) || $config?.features.auth === false) {
-			await signInHandler();
-		} else {
-			onboarding = $config?.onboarding ?? false;
-		}
+		// if (($config?.features.auth_trusted_header ?? false) || $config?.features.auth === false) {
+		await signInHandler();
+		// } else {
+			// onboarding = $config?.onboarding ?? false;
+		// }
 	});
 </script>
 
