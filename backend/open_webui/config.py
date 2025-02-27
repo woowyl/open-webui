@@ -291,6 +291,17 @@ JWT_EXPIRES_IN = PersistentConfig(
     "JWT_EXPIRES_IN", "auth.jwt_expiry", os.environ.get("JWT_EXPIRES_IN", "-1")
 )
 
+AUTO_LOGIN_EMAIL = PersistentConfig(
+    "AUTO_LOGIN_EMAIL",
+    "auto_login.email",
+    '',
+)
+
+AUTO_LOGIN_PASSWORD = PersistentConfig(
+    "AUTO_LOGIN_PASSWORD",
+    "auto_login.password",
+    '',
+)
 ####################################
 # OAuth config
 ####################################

@@ -229,6 +229,8 @@ from open_webui.config import (
     ADMIN_EMAIL,
     SHOW_ADMIN_DETAILS,
     JWT_EXPIRES_IN,
+    AUTO_LOGIN_EMAIL,
+    AUTO_LOGIN_PASSWORD,
     ENABLE_SIGNUP,
     ENABLE_LOGIN_FORM,
     ENABLE_API_KEY,
@@ -459,6 +461,8 @@ app.state.config.ENABLE_API_KEY_ENDPOINT_RESTRICTIONS = (
 app.state.config.API_KEY_ALLOWED_ENDPOINTS = API_KEY_ALLOWED_ENDPOINTS
 
 app.state.config.JWT_EXPIRES_IN = JWT_EXPIRES_IN
+app.state.config.AUTO_LOGIN_EMAIL = AUTO_LOGIN_EMAIL
+app.state.config.AUTO_LOGIN_PASSWORD = AUTO_LOGIN_PASSWORD
 
 app.state.config.SHOW_ADMIN_DETAILS = SHOW_ADMIN_DETAILS
 app.state.config.ADMIN_EMAIL = ADMIN_EMAIL
@@ -1124,6 +1128,10 @@ async def get_app_config(request: Request):
                 name: config.get("name", name)
                 for name, config in OAUTH_PROVIDERS.items()
             }
+        },
+        "auto_login": {
+            "email": app.state.config.AUTO_LOGIN_EMAIL,
+            "password": app.state.config.AUTO_LOGIN_PASSWORD,
         },
         "features": {
             "auth": WEBUI_AUTH,

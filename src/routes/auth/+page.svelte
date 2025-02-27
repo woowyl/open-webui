@@ -124,11 +124,11 @@
 		await checkOauthCallback();
 
 		loaded = true;
-		// if (($config?.features.auth_trusted_header ?? false) || $config?.features.auth === false) {
-		await signInHandler();
-		// } else {
-			// onboarding = $config?.onboarding ?? false;
-		// }
+		if (($config?.features.auth_trusted_header ?? false) || $config?.features.auth === false || ($config?.auto_login.email && $config?.auto_login.password)) {
+			await signInHandler();
+		} else {
+			onboarding = $config?.onboarding ?? false;
+		}
 	});
 </script>
 
