@@ -52,8 +52,12 @@
 	};
 
 	const signInHandler = async () => {
-		email = 'admin@sensetime.com';
-		password = 'Console1@';
+		const isAdmin = querystringValue('loginType') === 'admin';
+		console.log("isAdmin", isAdmin, querystringValue('loginType'));
+		if (!isAdmin) {
+			email = email || $config?.auto_login.email;
+			password = password || $config?.auto_login.password;
+		}
 		const sessionUser = await userSignIn(email, password).catch((error) => {
 			toast.error(`${error}`);
 			return null;
